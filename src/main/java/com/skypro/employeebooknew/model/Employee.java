@@ -1,5 +1,7 @@
 package com.skypro.employeebooknew.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Employee {
     private static int counter;
     private final int id;
@@ -9,8 +11,18 @@ public class Employee {
     private final int salary;
 
     public Employee(String firstName, String lastName, int department, int salary) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        if(StringUtils.isEmpty(firstName) || StringUtils.isBlank(firstName)){
+            throw new IllegalArgumentException();
+        } else {
+            this.firstName = StringUtils.capitalize(firstName);
+        }
+
+        if(StringUtils.isEmpty(lastName) || StringUtils.isBlank(lastName)){
+            throw new IllegalArgumentException();
+        } else {
+            this.lastName = StringUtils.capitalize(lastName);
+        }
+
         this.department = department;
         this.salary = salary;
 
