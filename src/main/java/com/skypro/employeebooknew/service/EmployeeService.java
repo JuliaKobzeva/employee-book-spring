@@ -4,10 +4,7 @@ import com.skypro.employeebooknew.model.Employee;
 import com.skypro.employeebooknew.record.EmployeeRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,25 +33,18 @@ public class EmployeeService {
                 .mapToInt(e -> e.getSalary())
                 .sum();
     }
-    public int getSalaryMin() {
+    public Employee getSalaryMin() {
         return employees.values().stream()
-                .mapToInt(e -> e.getSalary())
-                .min()
-                .getAsInt();
+                .min(Comparator.comparingInt(Employee::getSalary))
+                .get();
     }
-    public int getSalaryMax() {
+    public Employee getSalaryMax() {
         return employees.values().stream()
-                .mapToInt(e -> e.getSalary())
-                .max()
-                .getAsInt();
+                .max(Comparator.comparingInt(Employee::getSalary))
+                .get();
     }
-    public double getSalaryAverage() {
-        return employees.values().stream()
-                .mapToInt(e -> e.getSalary())
-                .average()
-                .getAsDouble();
-    }
-    public List<String> getSalaryHigh() {
+
+    public List<Employee> getSalaryHigh() {
 
         double sr = employees.values().stream()
                 .mapToInt(Employee->Employee.getSalary())
@@ -63,7 +53,6 @@ public class EmployeeService {
 
         return employees.values().stream()
                 .filter(x -> x.getSalary() > sr)
-                .map(x -> x.getLastName())
                 .collect(Collectors.toList());
     }
 }
