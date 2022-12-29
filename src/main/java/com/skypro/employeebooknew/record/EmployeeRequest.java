@@ -5,6 +5,7 @@ public class EmployeeRequest {
     private String lastName;
     private int department;
     private int salary;
+    private int id;
 
     public String getFirstName() {
         return firstName;
@@ -36,5 +37,9 @@ public class EmployeeRequest {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
     }
 }

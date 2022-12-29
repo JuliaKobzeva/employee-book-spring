@@ -34,3 +34,18 @@ GET http://localhost:8080/employees/salary/max
 
 ###получить всех сотрудников, зарплата которых больше средней
 GET http://localhost:8080/employees/high-salary
+
+###возвращает список сотрудников по департаменту
+GET http://localhost:8080/department/{id}/employees
+
+###возвращает сумму зарплат по департаменту
+GET http://localhost:8080/department/{id}/salary/sum
+
+###возвращает максимальную зарплату по департаменту
+GET http://localhost:8080/department/{id}/salary/max
+
+###возвращает минимальную зарплату по департаменту
+GET http://localhost:8080/department/{id}/salary/min
+
+###возвращает сотрудников, сгруппированых по отделам
+GET http://localhost:8080/department/employees

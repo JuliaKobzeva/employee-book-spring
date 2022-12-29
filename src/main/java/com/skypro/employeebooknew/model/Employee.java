@@ -10,7 +10,7 @@ public class Employee {
     private final int department;
     private final int salary;
 
-    public Employee(String firstName, String lastName, int department, int salary) {
+    public Employee(int id, String firstName, String lastName, int department, int salary) {
         if(StringUtils.isEmpty(firstName) || StringUtils.isBlank(firstName)){
             throw new IllegalArgumentException();
         } else {
